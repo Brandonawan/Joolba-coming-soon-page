@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px; /* Adjust the width as per your logo dimensions */
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .email-form input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 14px;
+            width: 250px;
+        }
+
+        .email-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .email-form button:hover {
+            background-color: green;
+        }
+
+        .countdown {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .social-icons {
+            margin-top: 40px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            font-size: 24px;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .social-icon:hover {
+            color: green;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Countdown Timer
+            const countdownElement = document.getElementById('countdown');
+            const launchDate = new Date('2023-08-01'); // Change to your launch date
+
+            function updateCountdown() {
+                const currentDate = new Date();
+                const difference = launchDate - currentDate;
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `Launching in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+                if (difference < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = "App is now live!";
+                }
+            }
+
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="Joolba.png" alt="Joolba Logo">
+        <h1>Coming Soon</h1>
+        <p>Sign up to be notified when we launch:</p>
+        <form class="email-form" action="#">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <div id="countdown"></div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</body>
+</html>
