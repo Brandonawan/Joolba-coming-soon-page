@@ -75,6 +75,8 @@ app.get('/notify', (req, res) => {
 
 // ...
 
+// ...
+
 // Handle form submission
 app.post('/notify', async (req, res) => {
   try {
@@ -94,8 +96,9 @@ app.post('/notify', async (req, res) => {
     try {
       workbook = XLSX.readFile('emails.xlsx');
     } catch (error) {
-      // File doesn't exist, create an empty workbook
+      // File doesn't exist, create a new workbook with a sheet
       workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, XLSX.utils.aoa_to_sheet([]), 'Emails');
     }
 
     const worksheet = workbook.Sheets['Emails'];
@@ -110,7 +113,6 @@ app.post('/notify', async (req, res) => {
     return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
   }
 });
-
 
 // Endpoint to download the Excel file
 app.get('/download-emails', (req, res) => {
