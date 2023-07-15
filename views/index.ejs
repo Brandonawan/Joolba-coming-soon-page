@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="images/Joolba.svg" type="image/svg+xml">
+    <script src="javascript/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="images/Joolba.svg" alt="Joolba Logo">
+        <h1>Coming Soon</h1>
+        <% if (error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+        <% if (message) { %>
+            <p class="success-message"><%= message %></p>
+        <% } %>
+        <p>Sign up to be notified when we launch:</p>
+        <form class="email-form" action="/notify" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+        <div id="countdown"></div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</body>
+</html>
