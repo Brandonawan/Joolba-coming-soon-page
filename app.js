@@ -44,34 +44,73 @@ app.get('/notify', (req, res) => {
 });
 
 // Handle form submission
+// app.post('/notify', async (req, res) => {
+//     try {
+//       const { email } = req.body;
+//       if (!email) {
+//         return res.render('index', { message: null, error: 'Email is required' });
+//       }
+  
+//       const existingEmail = await Email.findOne({ email });
+//       if (existingEmail) {
+//         return res.render('index', { message: 'Email already submitted', error: null });
+//       }
+  
+//       const userEmail = await Email.create({ email });
+  
+//       const workbook = XLSX.readFile('emails.xlsx');
+  
+//       const worksheet = workbook.Sheets['Emails'];
+  
+//       const lastRow = XLSX.utils.sheet_add_json(worksheet, [{ email }], { skipHeader: true, origin: -1 });
+  
+//       XLSX.writeFile(workbook, 'emails.xlsx');
+  
+//       return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
+//     } catch (error) {
+//       console.error(error);
+//       return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
+//     }
+//   });
+
+// ...
+
+// Handle form submission
 app.post('/notify', async (req, res) => {
-    try {
-      const { email } = req.body;
-      if (!email) {
-        return res.render('index', { message: null, error: 'Email is required' });
-      }
-  
-      const existingEmail = await Email.findOne({ email });
-      if (existingEmail) {
-        return res.render('index', { message: 'Email already submitted', error: null });
-      }
-  
-      const userEmail = await Email.create({ email });
-  
-      const workbook = XLSX.readFile('emails.xlsx');
-  
-      const worksheet = workbook.Sheets['Emails'];
-  
-      const lastRow = XLSX.utils.sheet_add_json(worksheet, [{ email }], { skipHeader: true, origin: -1 });
-  
-      XLSX.writeFile(workbook, 'emails.xlsx');
-  
-      return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
-    } catch (error) {
-      console.error(error);
-      return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.render('index', { message: null, error: 'Email is required' });
     }
-  });
+
+    const existingEmail = await Email.findOne({ email });
+    if (existingEmail) {
+      return res.render('index', { message: 'Email already submitted', error: null });
+    }
+
+    const userEmail = await Email.create({ email });
+
+    let workbook;
+    try {
+      workbook = XLSX.readFile('emails.xlsx');
+    } catch (error) {
+      // File doesn't exist, create an empty workbook
+      workbook = XLSX.utils.book_new();
+    }
+
+    const worksheet = workbook.Sheets['Emails'];
+
+    const lastRow = XLSX.utils.sheet_add_json(worksheet, [{ email }], { skipHeader: true, origin: -1 });
+
+    XLSX.writeFile(workbook, 'emails.xlsx');
+
+    return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
+  } catch (error) {
+    console.error(error);
+    return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
+  }
+});
+
 
 // Endpoint to download the Excel file
 app.get('/download-emails', (req, res) => {
