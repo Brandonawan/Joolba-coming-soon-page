@@ -2,19 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-dotenv.config();
+const compression = require('compression'); // Added for gzip compression
 const XLSX = require('xlsx');
+dotenv.config();
 
-const ejs = require("ejs");
 const app = express();
-// Start the server
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
-
-// app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+// Enable gzip compression
+app.use(compression());
 
 // Connect to MongoDB
 mongoose
