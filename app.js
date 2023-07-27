@@ -39,43 +39,10 @@ app.use(bodyParser.json());
 
 
 // Handle GET request to /notify
-app.get('/notify', (req, res) => {
+app.get('', (req, res) => {
     res.render('index', { message: null, error: null });
 });
 
-// Handle form submission
-// app.post('/notify', async (req, res) => {
-//     try {
-//       const { email } = req.body;
-//       if (!email) {
-//         return res.render('index', { message: null, error: 'Email is required' });
-//       }
-  
-//       const existingEmail = await Email.findOne({ email });
-//       if (existingEmail) {
-//         return res.render('index', { message: 'Email already submitted', error: null });
-//       }
-  
-//       const userEmail = await Email.create({ email });
-  
-//       const workbook = XLSX.readFile('emails.xlsx');
-  
-//       const worksheet = workbook.Sheets['Emails'];
-  
-//       const lastRow = XLSX.utils.sheet_add_json(worksheet, [{ email }], { skipHeader: true, origin: -1 });
-  
-//       XLSX.writeFile(workbook, 'emails.xlsx');
-  
-//       return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
-//     } catch (error) {
-//       console.error(error);
-//       return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
-//     }
-//   });
-
-// ...
-
-// ...
 
 // Handle form submission
 app.post('/notify', async (req, res) => {
@@ -119,7 +86,32 @@ app.get('/download-emails', (req, res) => {
     res.download('emails.xlsx', 'emails.xlsx');
   });
 
+
+app.use((req, res, next) => {
+  // Set the HTTP status code to 404 (Not Found)
+  res.status(404);
+  
+  // Render the custom 404 page using the "404.ejs" template
+  res.render('404', {
+    pageTitle: '404 - Not Found',
+    path: req.url,
+  });
+});
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
+});
+
+// Graceful server termination
+process.on('SIGINT', () => {
+  console.log('Server is shutting down...');
+  mongoose.connection.close(() => {
+    console.log('MongoDB connection closed');
+    server.close(() => {
+      console.log('Server terminated');
+      process.exit(0);
+    });
+  });
 });

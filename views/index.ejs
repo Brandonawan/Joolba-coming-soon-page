@@ -1,33 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Coming Soon</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="images/Joolba.svg" type="image/svg+xml">
-    <script src="javascript/index.js"></script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ComingSoon - Bootstrap Coming Soon Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<style>
+  h4{
+    font-family: 'Poppins';
+  }
+  #heading1{
+    font-family: 'Poppins';
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 100px;
+  }
+  .section-title{
+    font-family: 'Inter';
+  }
+  #contact-section{
+    font-family: 'Inter';
+  }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <img class="logo" src="images/Joolba.svg" alt="Joolba Logo">
-        <h1>Coming Soon</h1>
-        <% if (error) { %>
-            <p class="error-message"><%= error %></p>
-        <% } %>
-        <% if (message) { %>
-            <p class="success-message"><%= message %></p>
-        <% } %>
-        <p>Sign up to be notified when we launch:</p>
-        <form class="email-form" action="/notify" method="POST">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Notify Me</button>
-        </form>
-        <div id="countdown"></div>
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex flex-column align-items-center">
+
+      <h1 id="heading1">COMING SOON </h1>
+      <h2>We're working hard to finish the development of this site.</h2>
+      <div class="countdown d-flex justify-content-center" data-count="2023/12/5">
+        <div>
+          <h3>%d</h3>
+          <h4>DAYS</h4>
         </div>
+        <div>
+          <h3>%h</h3>
+          <h4>HOURS</h4>
+        </div>
+        <div>
+          <h3>%m</h3>
+          <h4>MINUTES</h4>
+        </div>
+        <div>
+          <h3>%s</h3>
+          <h4>SECONDS</h4>
+        </div>
+      </div>
+
+      <img class="logo" src="images/Joolba.svg" alt="Joolba Logo">
+      
+      <div class="subscribe">
+        <h4>Sign up below to receive updates and to be notified when we launch!</h4>
+        <form action="/notify" method="POST" role="form">
+          <div class="subscribe-form">
+            <input type="email" placeholder="Email Address" name="email"><input type="submit" value="Notify Me">
+          </div>
+        </form>
+      </div>
+
+      <div class="social-links text-center">
+        <a href="https://www.linkedin.com/company/joolba/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:nucsinfos@gmail.com" class="envelope"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>   
+      </div>
+
     </div>
+  </header>
+
+  <main id="main">
+
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 class="section-title"> Frequently Asked Questions</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+
+            <div class="info-wrap">
+              <div class="row">
+                <div class="col-lg-4 info">
+                  <h4>What is Joolba?</h4>
+                  <p>Joolba is a platform that connects people who want to learn and people who want to teach. </p>
+                </div>
+
+                <div class="col-lg-4 info mt-4 mt-lg-0">
+                  <h4>How does Joolba work?</h4>
+                  <p>People who want to teach can create a course on Joolba and people who want to learn can enroll in the course. </p>
+                </div>
+
+                <div class="col-lg-4 info mt-4 mt-lg-0">
+                  <h4>How do I create a course?</h4>
+                  <p>Click on the "Create a Course" button on the top right corner of the page. </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+    </section>
+    
+    <!-- <section id="header">
+      <div class="container d-flex flex-column align-items-center">
+        <div class="subscribe">
+          <h4>Sign up below to receive updates and to be notified when we launch!</h4>
+          <form action="" method="post" role="form">
+            <div class="subscribe-form">
+              <input type="email" placeholder="Email Address" name="email"><input type="submit" value="Notify Me">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 id="contact-section">Contact Us</h2>
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-10">
+
+            <div class="info-wrap">
+              <div class="row">
+                <div class="col-lg-4 info">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4>Location:</h4>
+                  <p>Lagos, Nigeria<br>LG, 100001</p>
+                </div>
+
+                <div class="col-lg-4 info mt-4 mt-lg-0">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>joolbamedia@gmail.com</p>
+                </div>
+
+                <div class="col-lg-4 info mt-4 mt-lg-0">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+234 704 229 1346<br>+234 816 455 1548 </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Joolba</span></strong>. All Rights Reserved 2023.
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="javascript/index.js"></script>
+
 </body>
+
 </html>
