@@ -129,13 +129,19 @@ h6 {
 @media (max-width: 575px) {
 
   #header h1 {
-    margin: 0 0 10px 0;
-    font-size: 46px;
+    margin: 0 0 5px 0; /* Adjust the margin for smaller spacing */
+    font-size: 32px; /* Reduce the font size for mobile view */
     font-weight: 700;
-    line-height: 56px;
+    line-height: 40px; /* Adjust the line height for better spacing */
     color: #fff;
   }
 
+  #header h2 {
+    color: #eee;
+    margin-bottom: 10px; /* Adjust the margin for smaller spacing */
+    font-size: 20px; /* Reduce the font size for mobile view */
+  }
+  
   #header .countdown div {
     width: 70px;
     padding: 10px 0;
