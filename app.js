@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const compression = require('compression'); // Added for gzip compression
 const XLSX = require('xlsx');
+const nodemailer = require('nodemailer')
 dotenv.config();
 
 const app = express();
@@ -32,6 +33,14 @@ mongoose
 // connect to emailSchema.js
 const Email = require('./models/emailSchema');
 
+// Set up Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.SENDING_EMAIL, // Replace with your Gmail email address
+    pass: process.env.EMAIL_PASSWORD // Replace with your Gmail password or an app-specific password if you have two-factor authentication enabled
+  }
+});
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -74,9 +83,24 @@ app.post('/notify', async (req, res) => {
 
     XLSX.writeFile(workbook, 'emails.xlsx');
 
-    return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
+    // Send the email to the user after successful subscription
+    const mailOptions = {
+      from: process.env.SENDING_EMAIL, // Replace with your Gmail email address or the email address you want to send the email from
+      to: email, // The email address of the user who subscribed
+      subject: 'Subscription Successful',
+      text: 'Thank you for subscribing to our newsletter. We\'ll notify you when we launch!'
+    };
 
-    
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.error(error);
+        return res.render('error', { message: null, error: 'Oops! Something went wrong while sending the email.' });
+      } else {
+        console.log('Email sent: ' + info.response);
+        return res.render('success', { message: 'Thank you for subscribing. We\'ve send an email to your inbox!' }); 
+      }
+    });
+
   } catch (error) {
     console.error(error);
     return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
