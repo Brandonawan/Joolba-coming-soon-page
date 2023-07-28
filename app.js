@@ -75,6 +75,8 @@ app.post('/notify', async (req, res) => {
     XLSX.writeFile(workbook, 'emails.xlsx');
 
     return res.render('success', { message: 'Thank you for subscribing. We\'ll notify you when we launch!' });
+
+    
   } catch (error) {
     console.error(error);
     return res.render('error', { message: null, error: 'Oops! Something went wrong. Please try again later.' });
@@ -84,14 +86,6 @@ app.post('/notify', async (req, res) => {
 // Endpoint to download the Excel file
 app.get('/download-emails', (req, res) => {
     res.download('emails.xlsx', 'emails.xlsx');
-  });
-
-  app.get('/success', (req, res) => {
-    res.render('success', { message: null, error: null });  
-  });
-
-  app.get('/error', (req, res) => {
-    res.render('error', { message: null, error: null });  
   });
 
 app.use((req, res, next) => {
