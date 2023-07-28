@@ -111,13 +111,24 @@ h6 {
   margin-bottom: 20px;
 }
 
-#header .countdown div {
+/* #header .countdown div {
   text-align: center;
   margin: 10px;
   width: 120px;
   padding: 15px 0;
   background: rgba(255, 255, 255, 0.12);
   border-top: 5px solid #228E20;
+} */
+
+#header .countdown div {
+  text-align: center;
+  margin: 10px;
+  width: 126px;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.12);
+  border-top: 7px solid #228E20;
+
+
 }
 
 #header .countdown div h3 {
@@ -129,6 +140,7 @@ h6 {
 @media (max-width: 575px) {
 
   #header h1 {
+    font-family: 'Poppins';
     margin: 0 0 0px 0; /* Adjust the margin for smaller spacing */
     font-size: 32px; /* Reduce the font size for mobile view */
     font-weight: 700;
@@ -140,10 +152,9 @@ h6 {
     margin: 0 2 20px 0px;
     color: #eee;
     margin-bottom: 10px; /* Adjust the margin for smaller spacing */
-    /* font-size: 20px */
   }
 
-  #header .countdown div {
+  #header .countdown div { 
     width: 70px;
     padding: 10px 0;
     margin: 10px 8px;
@@ -158,6 +169,38 @@ h6 {
     font-size: 0.8em; 
     margin-bottom: 0.2em; 
   }
+
+  .contact .info-wrap {
+    padding: 20px; /* Reduce the padding for mobile view */
+  }
+
+  .contact .info i {
+    float: none; /* Center the icon for mobile view */
+  }
+
+  .contact .info h4,
+  .contact .info p {
+    padding: 0 0 10px 0; /* Remove left padding for mobile view */
+  }
+
+  .contact .info .social-links {
+    padding-left: 0; /* Remove left padding for social links */
+    text-align: center;
+  }
+
+  .section-title {
+    padding-bottom: 15px;
+  }
+  
+  .section-title h2 {
+    font-size: 30px;
+    margin: 0 0 20px 0;
+  }
+
+  #contact-section{
+    padding: 0px 0px 0px 0px;
+  }
+  
 }
 
 #header .subscribe {
@@ -279,6 +322,7 @@ section {
   margin-bottom: 0;
 }
 
+
 /*--------------------------------------------------------------
 # Contact Us
 --------------------------------------------------------------*/
@@ -365,7 +409,7 @@ section {
   padding: 30px 0;
   color: #fff;
   font-size: 14px;
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;

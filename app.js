@@ -86,6 +86,13 @@ app.get('/download-emails', (req, res) => {
     res.download('emails.xlsx', 'emails.xlsx');
   });
 
+  app.get('/success', (req, res) => {
+    res.render('success', { message: null, error: null });  
+  });
+
+  app.get('/error', (req, res) => {
+    res.render('error', { message: null, error: null });  
+  });
 
 app.use((req, res, next) => {
   // Set the HTTP status code to 404 (Not Found)
