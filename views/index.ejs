@@ -23,13 +23,14 @@
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
 
 <style>
   h4{
-    font-family: 'Poppins';
+    font-family: 'Roboto', sans-serif;
   }
   #heading1{
     font-family: 'Poppins';
@@ -40,7 +41,9 @@
     margin-top: 100px;
   }
   #heading2{
-    font-family: 'Poppins';
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+    padding: 10px;
   }
   .section-title{
     font-family: 'Inter';
@@ -54,7 +57,21 @@
       background-color: green;
       color: white;
     }
-
+    
+    h2.accordion-header {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+    }
+    
+    /* Set font family for body text */
+    .accordion-body {
+      background-color: #f1f3f4;
+      font-family: 'Open Sans', sans-serif;
+      color: #5f6368;
+      text-align: justify;
+      padding: 10px;
+      font-weight: 400;
+    }
 
 </style>
 </head>
@@ -100,7 +117,7 @@
             }, 5000); // 5000 milliseconds (5 seconds) before the message disappears
           </script>
         <% } %>
-        <h4>Sign up below to receive updates and to be notified when we launch!</h4>
+        <h4>Sign up to keep track of our development lifecycle and the time of our launch!</h4>
         <form action="/notify" method="POST" role="form">
           <div class="subscribe-form">
             <input type="email" placeholder="Email Address" name="email"><input type="submit" value="Notify Me">
@@ -112,7 +129,6 @@
         <a href="https://www.linkedin.com/company/joolba/" class="linkedin"><i class="bi bi-linkedin"></i></a>
         <a href="mailto:nucsinfos@gmail.com" class="envelope"><i class="bi bi-envelope"></i></a>
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>   
       </div>
 
@@ -130,7 +146,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
     
-            <div class="accordion shadow-lg" id="faqAccordion" style="background-color: #F5F5F5;">
+            <div class="accordion shadow-lg" id="faqAccordion" style="background-color: #f1f3f4;">
               <!-- FAQ Item 1 -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqHeading1">
@@ -141,7 +157,7 @@
                 </h2>
                 <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
                   data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-dark"> <!-- Add the 'text-dark' class to make the text dark -->
+                  <div class="accordion-body"> <!-- Add the 'text-dark' class to make the text dark -->
                     Joolba is a dynamic media company based in Nigeria, dedicated to delivering timely and accurate news with integrity. Our team of experienced journalists and editors are committed to providing unbiased and balanced coverage of local and international news, business, politics, entertainment, and sports with emphasis on reporting the news AS IT IS.
                   </div>
                 </div>
@@ -157,9 +173,9 @@
                 </h2>
                 <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2"
                   data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-dark"> <!-- Add the 'text-dark' class to make the text dark -->
+                  <div class="accordion-body"> <!-- Add the 'text-dark' class to make the text dark -->
                     Joolba is an opensource media company  founded by Joseph Bashorun to drown misinformation and raise the standard for the the Nigerian media with emphasis on throttling the reporting of truth, accurate information with unbiasedness in journalism, consequently returning power to the hands of the people. It's a media by the people and for the people, 
-                    not affiliated or sponsored of for any political persons or reasons.
+                    Not affiliated or sponsored by or for any political persons or reasons.
                   </div>
                 </div>
               </div>
@@ -174,9 +190,25 @@
                 </h2>
                 <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3"
                   data-bs-parent="#faqAccordion">
-                  <div class="accordion-body text-dark"> <!-- Add the 'text-dark' class to make the text dark -->
+                  <div class="accordion-body"> <!-- Add the 'text-dark' class to make the text dark -->
                     We are currently in the development phase and will be launching soon. As a startup media organization, we are excited about the opportunity to bring a fresh perspective to the Nigerian media landscape and redefine the way news is delivered. The countdown gives an approximation of our launching date.
                   </div>
+                </div>
+              </div>
+            </div>
+
+                        <!-- FAQ Item 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="faqHeading1">
+                <button class="accordion-button collapsed fw-bold mb-3" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                  Can I contribute to Joolba to make it better?
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
+                  data-bs-parent="#faqAccordion">
+                <div class="accordion-body"> <!-- Add the 'text-dark' class to make the text dark -->
+                  Yes, Joolba thrives in the opensource environment and we encourage contributions in every form to this grand cause of fighting misinformation. Contact us via any of our contact information.
                 </div>
               </div>
             </div>
@@ -202,7 +234,7 @@
                 <div class="col-lg-4 info">
                   <i class="bi bi-geo-alt"></i>
                   <h4>Location:</h4>
-                  <p>Lagos, Nigeria<br>LG, 100001</p>
+                  <p>Lakewood Estate, Lekki <br>Lagos, Nigeria</p>
                 </div>
 
                 <div class="col-lg-4 info mt-4 mt-lg-0">
@@ -214,7 +246,7 @@
                 <div class="col-lg-4 info mt-4 mt-lg-0">
                   <i class="bi bi-phone"></i>
                   <h4>Call:</h4>
-                  <p>+234 704 229 1346<br>+234 816 455 1548 </p>
+                  <p>+234 705 146 7186<br>+234 816 455 1548 </p>.
                 </div>
               </div>
             </div>

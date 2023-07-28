@@ -116,7 +116,7 @@ app.post('/notify', async (req, res) => {
         return res.render('error', { message: null, error: 'Oops! Something went wrong while sending the email.' });
       } else {
         console.log('Email sent: ' + info.response);
-        return res.render('success', { message: 'Thank you for subscribing. We\'ve send an email to your inbox!' }); 
+        return res.render('success', { message: 'Thank you for subscribing. We\'ve sent an email to your inbox. You are now among the many people tracking our development lifecycle.' }); 
       }
     });
 
