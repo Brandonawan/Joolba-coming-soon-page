@@ -85,8 +85,21 @@
       </div>
 
       <img class="logo" src="images/Joolba.png" alt="Joolba Logo">
-      
+    
       <div class="subscribe">
+        <% if (message) { %>
+          <!-- Display the success message if the user has successfully subscribed -->
+          <div id="success-message" class="alert alert-success">
+            <p><%= message %> 😄</p>
+          </div>
+          <script>
+            // Automatically hide the success message after a few seconds
+            setTimeout(function() {
+              const successMessage = document.getElementById('success-message');
+              successMessage.style.display = 'none';
+            }, 5000); // 5000 milliseconds (5 seconds) before the message disappears
+          </script>
+        <% } %>
         <h4>Sign up below to receive updates and to be notified when we launch!</h4>
         <form action="/notify" method="POST" role="form">
           <div class="subscribe-form">

@@ -88,8 +88,27 @@ app.post('/notify', async (req, res) => {
       from: process.env.SENDING_EMAIL, // Replace with your Gmail email address or the email address you want to send the email from
       to: email, // The email address of the user who subscribed
       subject: 'Subscription Successful',
-      text: 'Thank you for subscribing to our newsletter. We\'ll notify you when we launch!'
-    };
+      // text: 'Thank you for subscribing to our newsletter. We\'ll notify you when we launch!',
+      html: `
+          <div style="text-align: center; background-color: #f2f2f2; padding: 20px;">
+          <img src="https://res.cloudinary.com/dq8v7o672/image/upload/v1690545177/Joolba/Joolba_rriaxh.png" alt="Joolba Logo" style="max-width: 200px;">
+          <h2>Welcome to Joolba News Media!</h2>
+        </div>
+        <div style="padding: 20px;">
+          <p>Dear Subscriber,</p>
+          <p>Thank you for subscribing to our newsletter. We're thrilled to have you join us!</p>
+          <p>Get ready to stay informed with the latest news, updates, and exclusive content straight to your inbox.</p>
+          <p>As we prepare for our official launch, you'll be among the first to receive our exciting updates and offerings.</p>
+          <p>If you have any questions or need assistance, feel free to contact us anytime. We'd love to hear from you!</p>
+          <p>Best regards,</p>
+          <p>The Joolba News Media Team</p>
+          <p>CEO -  Joseph Bashorun</p>
+          <p>Lagos, Nigeria, 100001</p>
+          <p style="font-size: 12px;">To unsubscribe, <a href="#">click here</a>.</p>
+        </div>    
+        `,
+      };
+    // };
 
     transporter.sendMail(mailOptions, function(error, info) {
       if (error) {
